@@ -49,19 +49,12 @@ public class CharacterMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("ground"))
-        {
-            isGrounded = true;
-            Debug.Log("grounded");
-        }
+        isGrounded = true;
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("ground"))
-        {
-            isGrounded = false;
-        }
+        isGrounded = false;
     }
 }
 
