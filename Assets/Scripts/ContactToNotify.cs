@@ -1,46 +1,47 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+public class CollisionEvent : UnityEvent<GameObject>
+{
+
+}
+
 [RequireComponent(typeof(Collider2D))]
 public class ContactToNotify : MonoBehaviour
 {
     
 
-    public UnityEvent collisionEnter = new UnityEvent();
-    public UnityEvent collisionStay = new UnityEvent();
-    public UnityEvent collisionExit = new UnityEvent();
+    public CollisionEvent collisionEnter = new CollisionEvent();
+    public CollisionEvent collisionStay = new CollisionEvent();
+    public CollisionEvent collisionExit = new CollisionEvent();
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        collisionEnter.Invoke();
+        collisionEnter.Invoke(collider.gameObject);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collider)
     {
-        collisionStay.Invoke();
+        collisionStay.Invoke(collider.gameObject);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collider)
     {
-        collisionExit.Invoke();
-        
+        collisionExit.Invoke(collider.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collisionEnter.Invoke();
-        
+        collisionEnter.Invoke(collision.gameObject);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        collisionStay.Invoke();
-        
+        collisionStay.Invoke(collision.gameObject);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        collisionExit.Invoke();
-        
+        collisionExit.Invoke(collision.gameObject);
     }
 }

@@ -20,6 +20,8 @@ public class CharacterMove : MonoBehaviour
     void Start()
     {
         rgbd = GetComponent<Rigidbody2D>();
+        GetComponentInChildren<ContactToNotify>().collisionEnter.AddListener(TouchGround);
+        GetComponentInChildren<ContactToNotify>().collisionExit.AddListener(LeaveGround);
     }
 
     void Update()
@@ -56,15 +58,13 @@ public class CharacterMove : MonoBehaviour
         }
     }
 
-    public void TouchGround()
+    public void TouchGround(GameObject go)
     {
         isGrounded = true;
-        Debug.Log("coucou");
     }
 
-    public void LeaveGround()
+    public void LeaveGround(GameObject go)
     {
-        Debug.Log("leave");
         isGrounded = false;
     }
 }
