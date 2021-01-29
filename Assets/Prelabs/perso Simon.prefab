@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7224282009129727898}
   - component: {fileID: 7224282009129727899}
+  - component: {fileID: 770212477886440516}
   m_Layer: 0
   m_Name: BottomTrigger
   m_TagString: BottomTriggerPlayer
@@ -90,6 +91,49 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.96829045, y: 0.029393554}
   m_EdgeRadius: 0
+--- !u!114 &770212477886440516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7224282009129727909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd33bd9d06cdc84880a0b4b4f3a8a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7224282009655576070}
+        m_MethodName: TouchGround
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  collisionStay:
+    m_PersistentCalls:
+      m_Calls: []
+  collisionExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7224282009655576070}
+        m_MethodName: LeaveGround
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7224282009655576065
 GameObject:
   m_ObjectHideFlags: 0

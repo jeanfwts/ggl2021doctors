@@ -56,13 +56,15 @@ public class CharacterMove : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    public void TouchGround()
     {
         isGrounded = true;
+        Debug.Log("coucou");
     }
 
-    private void OnTriggerExit2D(Collider2D collider)
+    public void LeaveGround()
     {
+        Debug.Log("leave");
         isGrounded = false;
     }
 }

@@ -32,7 +32,6 @@ public class CharracterAction : MonoBehaviour
 
          if (Input.GetMouseButtonDown(0) && GameObject.FindGameObjectsWithTag("projectile").Length < maxProjectile)
          {
-             Debug.Log(target.y +" " + target.x);
              float distance = difference.magnitude;
              Vector2 direction = difference / distance;
              direction.Normalize();
@@ -41,7 +40,6 @@ public class CharracterAction : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("coucou");
         }
 
      }
