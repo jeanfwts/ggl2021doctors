@@ -559,7 +559,7 @@ Transform:
   m_LocalScale: {x: 0.64427996, y: 1.3196801, z: 1}
   m_Children: []
   m_Father: {fileID: 1332740452}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &708068189
 MonoBehaviour:
@@ -2628,14 +2628,32 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!1 &1067607778
-  - component: {fileID: 1067607779}
-  - component: {fileID: 1067607780}
---- !u!4 &1067607779
-  m_GameObject: {fileID: 1067607778}
-  m_Father: {fileID: 1332740452}
 --- !u!61 &1067607780
-  m_GameObject: {fileID: 1067607778}
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502233189}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1332740446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2672,7 +2690,8 @@ MonoBehaviour:
   prefabLamp: {fileID: 2478275020747233116, guid: 0ef137945078b9048a57e06d5023dd94,
     type: 3}
   cam: {fileID: 131328337}
-  bulletSpeed: 0
+  maxProjectile: 3
+  projectileSpeed: 700
 --- !u!114 &1332740448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2797,7 +2816,6 @@ Transform:
   m_LocalPosition: {x: -6.78, y: 1.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1067607779}
   - {fileID: 708068188}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -2845,6 +2863,37 @@ Transform:
   - {fileID: 1605820500}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1502233189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1502233190}
+  - component: {fileID: 1067607780}
+  m_Layer: 0
+  m_Name: Recovery GameObject (1067607780)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1502233190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502233189}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1524929941
 PrefabInstance:
@@ -2908,6 +2957,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2478275020747233105, guid: 0ef137945078b9048a57e06d5023dd94,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 1cd233a162b8ec649a34db5a731f8107, type: 2}
     - target: {fileID: 2478275020747233107, guid: 0ef137945078b9048a57e06d5023dd94,
         type: 3}
       propertyPath: m_ShapeTexture
@@ -9411,11 +9465,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 38146147124115103, guid: 4de736d058574fd49aa3d2c2b0c4dfbc,
-        type: 3}
-      propertyPath: kindleSpeed
-      value: 0.01
 --- !u!1001 &6268289936099829935
 PrefabInstance:
   m_ObjectHideFlags: 0

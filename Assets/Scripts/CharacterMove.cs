@@ -29,7 +29,7 @@ public class CharacterMove : MonoBehaviour
         if (isGrounded)
         {
             rgbd.velocity = transform.right * xSpeed * h;
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Vertical"))
             {
                 rgbd.AddForce(transform.up * ySpeed * 20);
             }
