@@ -43,6 +43,4 @@ public class Torch : MonoBehaviour
         _litUp = true;
     }
 
-    private 
-
 }
