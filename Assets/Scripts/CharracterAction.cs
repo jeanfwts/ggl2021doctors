@@ -39,6 +39,11 @@ public class CharracterAction : MonoBehaviour
              fireLight(direction, rotationZ);
          }
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("coucou");
+        }
+
      }
     
     void fireLight(Vector2 direction, float rotationZ)

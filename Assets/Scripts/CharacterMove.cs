@@ -45,6 +45,15 @@ public class CharacterMove : MonoBehaviour
 
             rgbd.velocity = new Vector2(Mathf.Clamp(rgbd.velocity.x, -xSpeed, xSpeed), rgbd.velocity.y);
         }
+
+        if (rgbd.velocity.x > 0)
+        {
+            gameObject.transform.GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        }
+        if (rgbd.velocity.x < 0)
+        {
+            gameObject.transform.GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
