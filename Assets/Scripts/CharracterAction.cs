@@ -9,7 +9,8 @@ public class CharracterAction : MonoBehaviour
     public GameObject prefabLamp;
     public GameObject cam;
 
-    public float bulletSpeed = 60.0f;
+    public float maxProjectile = 3f;
+    public float projectileSpeed = 700f;
 
     Rigidbody2D player;
 
@@ -29,7 +30,7 @@ public class CharracterAction : MonoBehaviour
          float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
          
 
-         if (Input.GetMouseButtonDown(0))
+         if (Input.GetMouseButtonDown(0) && GameObject.FindGameObjectsWithTag("projectile").Length < maxProjectile)
          {
              Debug.Log(target.y +" " + target.x);
              float distance = difference.magnitude;
@@ -42,9 +43,11 @@ public class CharracterAction : MonoBehaviour
     
     void fireLight(Vector2 direction, float rotationZ)
     {
-        GameObject light = Instantiate(prefabLamp) as GameObject;
+        GameObject light = Instantiate(prefabLamp, prefabLamp.transform.position, prefabLamp.transform.rotation);
         light.transform.position = player.transform.position;
         light.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
-        light.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+        //light.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+        light.GetComponent<Rigidbody2D>().AddForce(direction * projectileSpeed);
+
     }
 }
