@@ -21,6 +21,11 @@ public class Enemy : MonoBehaviour
         {
             Destroy(_player);
         }
-     
+
+        if (collision.GetComponent<Collider2D>().tag == "Sword")
+        {
+            Destroy(gameObject);
+        }
+
     }
 }
