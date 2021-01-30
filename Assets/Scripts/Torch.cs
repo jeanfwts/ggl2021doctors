@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
@@ -10,10 +11,11 @@ public class Torch : MonoBehaviour
     [SerializeField] private float kindleSpeed = 0.01f;
 
     private Light2D _torchLight;
-    private bool _litUp = false;
+    private bool _litUp;
 
     void Start()
     {
+        _litUp = false;
         _torchLight = GetComponent<Light2D>();
         _torchLight.enabled = false;
         _torchLight.intensity = 0f;
@@ -21,19 +23,24 @@ public class Torch : MonoBehaviour
     }
 
 
+    public bool GetLitUp()
+    {
+        return _litUp;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // la torche s'allume au contact du projectile
         if (collision.GetComponent<Collider2D>().tag == "projectile" && !_torchLight.enabled)
         {
-            Debug.Log("Triggered by projectile");
-            _torchLight.enabled = true;
             Kindle();
         }
     }
 
     void Kindle()
     {
+        _litUp = true;
+        _torchLight.enabled = true;
         StartCoroutine(ExpendRadius());
         StartCoroutine(InscreaseIntensity());
     }
