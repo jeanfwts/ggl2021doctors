@@ -20,7 +20,7 @@ public class GameLevelManager : MonoBehaviour
     {
         if (_player == null)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
