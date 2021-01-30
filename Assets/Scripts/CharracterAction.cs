@@ -9,17 +9,21 @@ public class CharracterAction : MonoBehaviour
     public GameObject prefabLamp;
     public GameObject cam;
 
-    public float maxProjectile = 3f;
+    public float maxProjectile = 5f;
     public float projectileSpeed = 700f;
+
+    public int maxProjectileHold = 3;
+    private int _currentlyHoldProjective { get; set; }
 
     Rigidbody2D player;
 
     // Start is called before the first frame update
     void Start()
     {
+        _currentlyHoldProjective = 3;
         player = GetComponent<Rigidbody2D>();
         ContactToNotify attackZone = transform.GetChild(0).Find("attackZone").GetComponent<ContactToNotify>();
-  
+        Debug.Log("Remaining projectives: " + _currentlyHoldProjective);
     }
 
     // Update is called once per frame
@@ -34,10 +38,20 @@ public class CharracterAction : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1) && GameObject.FindGameObjectsWithTag("projectile").Length < maxProjectile)
         {
-            float distance = difference.magnitude;
-            Vector2 direction = difference / distance;
-            direction.Normalize();
-            FireLight(direction, rotationZ);
+            if(_currentlyHoldProjective > 0)
+            {
+                float distance = difference.magnitude;
+                Vector2 direction = difference / distance;
+                direction.Normalize();
+                FireLight(direction, rotationZ);
+                _currentlyHoldProjective--;
+                Debug.Log("Remaining projectives: " + _currentlyHoldProjective);
+            }
+            else
+            {
+                Debug.Log("play animation of firing the projecture failure");
+            }
+            
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -49,13 +63,11 @@ public class CharracterAction : MonoBehaviour
 
     IEnumerator attack()
     {
-        Debug.Log("attackTest");
         // smoothly kindle the torch
         CircleCollider2D attackZone = transform.GetChild(0).Find("attackZone").gameObject.GetComponent<CircleCollider2D>();
         attackZone.enabled = true;
         yield return new WaitForSeconds(0.5f);
         attackZone.enabled = false;
-        Debug.Log("attackOk");
     }
 
     void FireLight(Vector2 direction, float rotationZ)
