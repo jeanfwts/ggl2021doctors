@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2478275019983162506}
   - component: {fileID: 2478275019983162507}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 2478275020747233117}
   - component: {fileID: 2478275020747233105}
   - component: {fileID: 6720089967978314996}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: baton lumineux
   m_TagString: projectile
   m_Icon: {fileID: 0}
@@ -281,4 +281,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeToLive: 5
-  player: {fileID: 0}
+  character: {fileID: 0}
+  ready: 1

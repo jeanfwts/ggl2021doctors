@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class CharacterMove : MonoBehaviour
 {
     [SerializeField]
@@ -15,11 +18,16 @@ public class CharacterMove : MonoBehaviour
 
     bool isGrounded = false;
 
+    public AudioClip landSound;
+    public AudioClip jumpSound;
+
     Rigidbody2D rgbd;
+    AudioSource audio;
 
     void Start()
     {
         rgbd = GetComponent<Rigidbody2D>();
+        audio = GetComponent<AudioSource>();
         ContactToNotify bottomTrigger = transform.GetChild(0).Find("BottomTrigger").GetComponent<ContactToNotify>();
         bottomTrigger.collisionEnter.AddListener(TouchGround);
         bottomTrigger.collisionExit.AddListener(LeaveGround);
@@ -61,11 +69,13 @@ public class CharacterMove : MonoBehaviour
 
     public void TouchGround(GameObject go)
     {
+        audio.PlayOneShot(landSound);
         isGrounded = true;
     }
 
     public void LeaveGround(GameObject go)
     {
+        audio.PlayOneShot(jumpSound);
         isGrounded = false;
     }
 }

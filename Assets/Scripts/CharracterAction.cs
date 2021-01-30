@@ -1,67 +1,80 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Cinemachine;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class CharracterAction : MonoBehaviour
 {
-    //public GameObject crosshairs;
-    Vector3 target;
-    public GameObject prefabLamp;
+    public Projectile[] lamps = new Projectile[3];
     public GameObject cam;
 
-    public float maxProjectile = 5f;
     public float projectileSpeed = 700f;
+    public int maxLampDistance = 10;
 
-    public int maxProjectileHold = 3;
     private int currentlyHoldProjective;
+    public int maxProjectileHold = 3;
 
+    Vector3 target;
     Rigidbody2D player;
+    CinemachineTargetGroup ctg;
 
-    // Start is called before the first frame update
     void Start()
     {
-        currentlyHoldProjective = 3;
         player = GetComponent<Rigidbody2D>();
+        ctg = FindObjectOfType<CinemachineTargetGroup>();
         ContactToNotify attackZone = transform.GetChild(0).Find("attackZone").GetComponent<ContactToNotify>();
-        
+        currentlyHoldProjective = maxProjectileHold;
     }
 
-    // Update is called once per frame
     void Update()
-     {
-         target = cam.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
-         //crosshairs.transform.position = new Vector2(target.x, target.y);
+    {
+        target = cam.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
 
-         Vector3 difference = target - player.transform.position;
-         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        Vector3 difference = target - player.transform.position;
+        float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
 
-        if (Input.GetMouseButtonDown(1) && GameObject.FindGameObjectsWithTag("projectile").Length < maxProjectile)
+        if (Input.GetMouseButtonDown(1) && currentlyHoldProjective-- > 0)
         {
-            if(currentlyHoldProjective > 0)
-            {
-                float distance = difference.magnitude;
-                Vector2 direction = difference / distance;
-                direction.Normalize();
-                FireLight(direction, rotationZ);
-                currentlyHoldProjective--;
-                Debug.Log("Remaining projectives: " + currentlyHoldProjective);
-            }
-            else
-            {
-                Debug.Log("play animation of firing the projecture failure");
-            }
-            
+            float distance = difference.magnitude;
+            Vector2 direction = difference / distance;
+            direction.Normalize();
+            FireLight(direction, rotationZ);
+
+        }
+        else
+        {
+            //TODO animation fail
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("attack");
-            StartCoroutine(attack());
+            Debug.Log("Attack");
+            StartCoroutine(Attack());
         }
     }
 
-    IEnumerator attack()
+    private void LateUpdate()
+    {
+        FollowingCameraDecision(0);
+        FollowingCameraDecision(1);
+        FollowingCameraDecision(2);
+    }
+
+    private void FollowingCameraDecision(int lampIndex)
+    {
+        if (Vector2.Distance(lamps[lampIndex].transform.position, transform.position) > maxLampDistance)
+        {
+            ctg.m_Targets[lampIndex+1].target = null;
+        }
+        else
+        {
+            if(ctg.m_Targets.Length <= lampIndex)
+                ctg.m_Targets[lampIndex+1].target = lamps[lampIndex].transform;
+        }
+    }
+
+    IEnumerator Attack()
     {
         // smoothly kindle the torch
         CircleCollider2D attackZone = transform.GetChild(0).Find("attackZone").gameObject.GetComponent<CircleCollider2D>();
@@ -72,11 +85,29 @@ public class CharracterAction : MonoBehaviour
 
     void FireLight(Vector2 direction, float rotationZ)
     {
-        GameObject light = Instantiate(prefabLamp, prefabLamp.transform.position, prefabLamp.transform.rotation);
-        light.transform.position = player.transform.position;
-        light.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
-        //light.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-        light.GetComponent<Rigidbody2D>().AddForce(direction * projectileSpeed);
+        Projectile proj = FindReadyLight();
+        if (proj != null)
+        {
+            GameObject light = proj.gameObject;
+            light.transform.position = player.transform.position;
+            light.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
+            light.GetComponent<Rigidbody2D>().AddForce(direction * projectileSpeed);
+        }
+        else
+        {
+            Debug.Log("No ammo");
+        }
+    }
+
+    Projectile FindReadyLight()
+    {
+        Projectile projReady = lamps.FirstOrDefault(p => p.ready == true);
+        if (projReady != null)
+        {
+            projReady.character = transform;
+            projReady.Throw();
+        }
+        return projReady;
     }
 
     public void refill()

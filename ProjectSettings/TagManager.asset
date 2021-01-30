@@ -22,8 +22,8 @@ TagManager:
   - obstacle
   - BottomPlayerTrigger
   - Monster
-  - 
-  - 
+  - Projectile
+  - Player
   - 
   - 
   - 
