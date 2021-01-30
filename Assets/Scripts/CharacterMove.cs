@@ -20,8 +20,9 @@ public class CharacterMove : MonoBehaviour
     void Start()
     {
         rgbd = GetComponent<Rigidbody2D>();
-        GetComponentInChildren<ContactToNotify>().collisionEnter.AddListener(TouchGround);
-        GetComponentInChildren<ContactToNotify>().collisionExit.AddListener(LeaveGround);
+        ContactToNotify bottomTrigger = transform.GetChild(0).Find("BottomTrigger").GetComponent<ContactToNotify>();
+        bottomTrigger.collisionEnter.AddListener(TouchGround);
+        bottomTrigger.collisionExit.AddListener(LeaveGround);
     }
 
     void Update()
@@ -50,11 +51,11 @@ public class CharacterMove : MonoBehaviour
 
         if (rgbd.velocity.x > 0)
         {
-            gameObject.transform.GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         }
         if (rgbd.velocity.x < 0)
         {
-            gameObject.transform.GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+            transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
         }
     }
 
