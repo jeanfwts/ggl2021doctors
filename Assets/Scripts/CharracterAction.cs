@@ -13,17 +13,17 @@ public class CharracterAction : MonoBehaviour
     public float projectileSpeed = 700f;
 
     public int maxProjectileHold = 3;
-    private int _currentlyHoldProjective { get; set; }
+    private int currentlyHoldProjective;
 
     Rigidbody2D player;
 
     // Start is called before the first frame update
     void Start()
     {
-        _currentlyHoldProjective = 3;
+        currentlyHoldProjective = 3;
         player = GetComponent<Rigidbody2D>();
         ContactToNotify attackZone = transform.GetChild(0).Find("attackZone").GetComponent<ContactToNotify>();
-        Debug.Log("Remaining projectives: " + _currentlyHoldProjective);
+        
     }
 
     // Update is called once per frame
@@ -38,14 +38,14 @@ public class CharracterAction : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1) && GameObject.FindGameObjectsWithTag("projectile").Length < maxProjectile)
         {
-            if(_currentlyHoldProjective > 0)
+            if(currentlyHoldProjective > 0)
             {
                 float distance = difference.magnitude;
                 Vector2 direction = difference / distance;
                 direction.Normalize();
                 FireLight(direction, rotationZ);
-                _currentlyHoldProjective--;
-                Debug.Log("Remaining projectives: " + _currentlyHoldProjective);
+                currentlyHoldProjective--;
+                Debug.Log("Remaining projectives: " + currentlyHoldProjective);
             }
             else
             {
@@ -77,5 +77,10 @@ public class CharracterAction : MonoBehaviour
         light.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
         //light.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         light.GetComponent<Rigidbody2D>().AddForce(direction * projectileSpeed);
+    }
+
+    public void refill()
+    {
+        currentlyHoldProjective = maxProjectileHold;
     }
 }
