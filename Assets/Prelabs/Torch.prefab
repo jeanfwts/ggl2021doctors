@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 33f2a4e17851c3240826d80d4d735f5a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce278e94d23590a47b072b50fe0ad127, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_LightType: 0
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.623
-  m_Color: {r: 0.9150943, g: 0.754938, b: 0.51366144, a: 1}
+  m_Color: {r: 0.59607846, g: 0.80392164, b: 0.8470589, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
