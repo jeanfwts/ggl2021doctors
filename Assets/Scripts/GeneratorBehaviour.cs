@@ -45,7 +45,8 @@ public class GeneratorBehaviour : Kindlable
         }
 
         if (collider.tag == "Player")
-        { 
+        {
+            GameLevelManager.INSTANCE.checkPoint = transform;
             _generatorAnimator.SetTrigger("LitUp");
             if (_turnOff)
             {

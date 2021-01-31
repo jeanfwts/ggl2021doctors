@@ -5,17 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class GameLevelManager : MonoBehaviour
 {
+    public Transform checkPoint;
+    public static GameLevelManager INSTANCE;
+
     GameObject _player;
     GameObject currentNiveau;
 
-
-    // Start is called before the first frame update
     void Start()
     {
+        if(INSTANCE != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            INSTANCE = this;
+        }
+        DontDestroyOnLoad(gameObject);
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_player == null)
