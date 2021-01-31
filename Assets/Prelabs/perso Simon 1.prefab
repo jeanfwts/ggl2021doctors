@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Color: {r: 0.49803925, g: 0.83921576, b: 0.9921569, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0.185
-  m_ApplyToSortingLayers: 83c8ef730000000091e86b16e3f2bbba
+  m_ApplyToSortingLayers: 000000007b64fe17
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -217,9 +217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2682da6595a6af040bd10959317d5f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSpeed: 8
+  xSpeed: 2.8
   ySpeed: 12
-  xAirDivider: 2
+  xAirDivider: 1.5
   yAirDivider: 20
   landSound: {fileID: 0}
   jumpSound: {fileID: 0}
@@ -593,6 +593,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1350040028565992942}
     m_Modifications:
+    - target: {fileID: 2478275019983162507, guid: 0ef137945078b9048a57e06d5023dd94,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[2]
+      value: 376170641
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478275019983162507, guid: 0ef137945078b9048a57e06d5023dd94,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[3]
+      value: -1162087709
+      objectReference: {fileID: 0}
     - target: {fileID: 2478275020747233104, guid: 0ef137945078b9048a57e06d5023dd94,
         type: 3}
       propertyPath: m_RootOrder
@@ -700,6 +710,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1350040028565992942}
     m_Modifications:
+    - target: {fileID: 2478275019983162507, guid: 0ef137945078b9048a57e06d5023dd94,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[2]
+      value: 376170641
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478275019983162507, guid: 0ef137945078b9048a57e06d5023dd94,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[3]
+      value: -1162087709
+      objectReference: {fileID: 0}
     - target: {fileID: 2478275020747233104, guid: 0ef137945078b9048a57e06d5023dd94,
         type: 3}
       propertyPath: m_RootOrder

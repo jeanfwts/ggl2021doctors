@@ -40,4 +40,9 @@ public class GameLevelManager : MonoBehaviour
         if (checkPointPos != null && checkPointPos != Vector2.zero)
             _player.transform.position = checkPointPos;
     }
+
+    public void FinishGame()
+    {
+        Application.Quit();
+    }
 }
