@@ -24,7 +24,6 @@ public class GeneratorBehaviour : Kindlable
 
     private void Update()
     {
-        Debug.Log("Remaining time: " + rechargingDelay);
         if(_rechargingRemainingTime > 0f)
         {
             _rechargingRemainingTime -= Time.deltaTime;
