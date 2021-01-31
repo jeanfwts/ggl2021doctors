@@ -23,6 +23,7 @@ public class CharacterMove : MonoBehaviour
 
     Rigidbody2D rgbd;
     AudioSource audio;
+    Animator playerAnimator;
 
     void Start()
     {
@@ -31,11 +32,23 @@ public class CharacterMove : MonoBehaviour
         ContactToNotify bottomTrigger = transform.GetChild(0).Find("BottomTrigger").GetComponent<ContactToNotify>();
         bottomTrigger.collisionEnter.AddListener(TouchGround);
         bottomTrigger.collisionExit.AddListener(LeaveGround);
+        playerAnimator = GameObject.Find("spritePlayer").GetComponent<Animator>();
     }
 
     void Update()
     {
         float h = Input.GetAxisRaw("Horizontal");
+
+        if (isGrounded) { 
+            if (h != 0)
+            {
+                playerAnimator.SetTrigger("PlayerMove");
+            }
+            else
+            {
+                playerAnimator.SetTrigger("PlayerIdle");
+            }
+        }
 
         if (isGrounded)
         {

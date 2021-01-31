@@ -17,12 +17,15 @@ public class CharracterAction : MonoBehaviour
     Vector3 target;
     Rigidbody2D player;
     CinemachineTargetGroup ctg;
+    Animator playerAnimator;
 
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
         ctg = FindObjectOfType<CinemachineTargetGroup>();
-        
+        playerAnimator = GameObject.Find("spritePlayer").GetComponent<Animator>();
+
+        Debug.Log(playerAnimator);        
         //ContactToNotify attackZone = transform.GetChild(0).Find("attackZone").GetComponent<ContactToNotify>();
 
         currentlyHoldProjective = maxProjectileHold;
@@ -49,9 +52,12 @@ public class CharracterAction : MonoBehaviour
             //TODO animation fail
         }
 
+
         if (Input.GetMouseButtonDown(0))
         {
+            
             Debug.Log("Attack");
+            playerAnimator.SetTrigger("PlayerAttack");
             StartCoroutine(Attack());
         }
     }
@@ -87,6 +93,10 @@ public class CharracterAction : MonoBehaviour
 
     void FireLight(Vector2 direction, float rotationZ)
     {
+        Vector2 dirNorm = direction.normalized;
+        Debug.Log("dir norm: "+ dirNorm);
+        bool haut = dirNorm.y == 1 && dirNorm.x < 0.5f;
+
         Projectile proj = FindReadyLight();
         if (proj != null)
         {
@@ -94,11 +104,30 @@ public class CharracterAction : MonoBehaviour
             light.transform.position = player.transform.position;
             light.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
             light.GetComponent<Rigidbody2D>().AddForce(direction * projectileSpeed);
+
+            if (haut)
+            {
+                playerAnimator.SetTrigger("PlayerTireHaut");
+            }
+            else
+            {
+                playerAnimator.SetTrigger("PlayerTireDevant");
+            }
         }
         else
         {
             Debug.Log("No ammo");
+            if (haut)
+            {
+                playerAnimator.SetTrigger("PlayerTireRateHaut");
+            }
+            else
+            {
+                playerAnimator.SetTrigger("PlayerTireRateDevant");
+            }
         }
+
+        
     }
 
     Projectile FindReadyLight()
