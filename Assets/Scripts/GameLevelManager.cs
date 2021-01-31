@@ -27,14 +27,23 @@ public class GameLevelManager : MonoBehaviour
 
     void Update()
     {
-        if (_player == null)
+        if (_player == null || Input.GetKeyDown(KeyCode.Return))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            FinishGame();
         }
     }
 
     private void OnLevelWasLoaded(int level)
     {
+        GameObject fin = GameObject.Find("END");
+        if (fin != null)
+            fin.GetComponent<ContactToNotify>().collisionEnterBis.AddListener(FinishGame);
+        else
+            Debug.Log("fin introuvable");
         _player = GameObject.FindGameObjectWithTag("Player");
         Debug.Log(checkPointPos);
         if (checkPointPos != null && checkPointPos != Vector2.zero)
@@ -43,6 +52,7 @@ public class GameLevelManager : MonoBehaviour
 
     public void FinishGame()
     {
+        Debug.Log("Jeu fini");
         Application.Quit();
     }
 }
