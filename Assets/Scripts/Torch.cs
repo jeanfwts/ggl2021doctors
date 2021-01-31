@@ -13,6 +13,7 @@ public class Torch : Kindlable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.GetComponent<Collider2D>().tag); 
         // la torche s'allume au contact du projectile
         if (collision.GetComponent<Collider2D>().tag == "projectile" && !_torchLight.enabled)
         {
