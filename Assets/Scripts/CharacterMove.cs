@@ -85,12 +85,14 @@ public class CharacterMove : MonoBehaviour
     {
         audio.PlayOneShot(landSound);
         isGrounded = true;
+        playerAnimator.SetTrigger("PlayerLanding");
     }
 
     public void LeaveGround(GameObject go)
     {
         audio.PlayOneShot(jumpSound);
         isGrounded = false;
+        playerAnimator.SetTrigger("PlayerInitJump");
     }
 }
 
