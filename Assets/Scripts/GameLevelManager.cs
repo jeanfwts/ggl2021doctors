@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameLevelManager : MonoBehaviour
 {
-    public Transform checkPoint;
+    public Vector2 checkPointPos;
     public static GameLevelManager INSTANCE;
 
     GameObject _player;
@@ -31,5 +31,13 @@ public class GameLevelManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        _player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log(checkPointPos);
+        if (checkPointPos != null && checkPointPos != Vector2.zero)
+            _player.transform.position = checkPointPos;
     }
 }
