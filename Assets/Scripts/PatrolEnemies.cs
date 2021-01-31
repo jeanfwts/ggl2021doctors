@@ -16,7 +16,7 @@ public class PatrolEnemies : MonoBehaviour
 
     private void Update()
     {
-        rgbd.AddForce(-enemy.transform.right * 50f);
+        rgbd.AddForce(enemy.transform.right * 50f);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

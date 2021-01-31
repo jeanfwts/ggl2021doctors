@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 910603962694965053}
   - component: {fileID: 941663824118636650}
   - component: {fileID: 3569523469249590467}
+  - component: {fileID: 8008946964533028459}
   m_Layer: 0
   m_Name: Marcheur sans AI
   m_TagString: Monster
@@ -163,7 +164,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910603962694965044}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0047640093, w: 0.9999887}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
@@ -209,8 +210,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 78d2f83703315f14db39056c1e282205, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0a98ccad353788742b099e2c7f03394e, type: 3}
+  m_Color: {r: 0.68235296, g: 0.25490198, b: 0.9490197, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -248,7 +249,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 0.621496
+  m_PointLightOuterRadius: 0.7537925
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -290,7 +291,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.32, y: 9.45}
+    oldSize: {x: 30.72, y: 30.72}
     newSize: {x: 6.1, y: 5.11}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -311,6 +312,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f21510754ec992c4292133017bcbfdbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxIntensity: 1
+  maxRadius: 0.4
+  kindleSpeed: 0.01
+  isTriggered: 0
+--- !u!95 &8008946964533028459
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910603962694965044}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2570eef534555ec4cb16ccd0ab152fcf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7299062322411609704
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,3 +406,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 910603962687759150}
+  enemySansIA: {fileID: 0}
