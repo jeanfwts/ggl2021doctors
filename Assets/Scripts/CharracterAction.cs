@@ -22,7 +22,9 @@ public class CharracterAction : MonoBehaviour
     {
         player = GetComponent<Rigidbody2D>();
         ctg = FindObjectOfType<CinemachineTargetGroup>();
-        ContactToNotify attackZone = transform.GetChild(0).Find("attackZone").GetComponent<ContactToNotify>();
+        
+        //ContactToNotify attackZone = transform.GetChild(0).Find("attackZone").GetComponent<ContactToNotify>();
+
         currentlyHoldProjective = maxProjectileHold;
     }
 
