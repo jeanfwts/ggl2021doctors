@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 1350040028565992466}
   - component: {fileID: 1350040028565992943}
   - component: {fileID: 5229555750615600560}
+  - component: {fileID: -2477503796358456916}
   m_Layer: 12
   m_Name: perso Simon 1
   m_TagString: Player
@@ -339,6 +340,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &-2477503796358456916
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350040028565992469}
+  m_Enabled: 1
 --- !u!1 &1350040029091841457
 GameObject:
   m_ObjectHideFlags: 0

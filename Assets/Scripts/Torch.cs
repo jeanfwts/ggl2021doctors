@@ -6,8 +6,11 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class Torch : Kindlable
 {
+    AudioSource audioSource;
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         initKindlable();
     }
 
@@ -18,6 +21,7 @@ public class Torch : Kindlable
         if (collision.GetComponent<Collider2D>().tag == "projectile" && !_torchLight.enabled)
         {
             Kindle();
+            audioSource.Play();
         }
     }
 
