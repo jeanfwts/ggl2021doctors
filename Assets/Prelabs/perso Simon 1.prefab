@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 7054542005395322113}
   - component: {fileID: 2304246795937347846}
   m_Layer: 0
-  m_Name: Point Light 2D (1)
+  m_Name: Point Light 2D attackzone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
