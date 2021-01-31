@@ -41,7 +41,7 @@ public class GameLevelManager : MonoBehaviour
     {
         GameObject fin = GameObject.Find("END");
         if (fin != null)
-            fin.GetComponent<ContactToNotify>().collisionEnterBis.AddListener(FinishGame);
+            fin.GetComponent<ContactToNotify>()?.collisionEnterBis?.AddListener(FinishGame);
         else
             Debug.Log("fin introuvable");
         _player = GameObject.FindGameObjectWithTag("Player");

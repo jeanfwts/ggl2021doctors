@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 38146147124115098}
   - component: {fileID: 38146147124115103}
   - component: {fileID: 38146147124115102}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8857c9b70a05346b61715af5a66643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxIntensity: 1
+  maxRadius: 0.4
   kindleSpeed: 0.001
 --- !u!58 &38146147124115102
 CircleCollider2D:
