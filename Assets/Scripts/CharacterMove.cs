@@ -17,6 +17,7 @@ public class CharacterMove : MonoBehaviour
     float yAirDivider = 20;
 
     bool isGrounded = false;
+    bool isPreviouslyMoving = false;
 
     public AudioClip landSound;
     public AudioClip jumpSound;
@@ -39,16 +40,16 @@ public class CharacterMove : MonoBehaviour
     {
         float h = Input.GetAxisRaw("Horizontal");
 
-        if (isGrounded) { 
-            if (h != 0)
+        bool isCurrentLyMoving = h != 0;
+        if(isCurrentLyMoving != isPreviouslyMoving )
+        {
+            Debug.Log("999:  switch animation!");
+            if (isGrounded)
             {
-                playerAnimator.SetTrigger("PlayerMove");
-            }
-            else
-            {
-                playerAnimator.SetTrigger("PlayerIdle");
+                playerAnimator.SetTrigger((isCurrentLyMoving) ? "PlayerMove" : "PlayerIdle");
             }
         }
+        isPreviouslyMoving = isCurrentLyMoving;
 
         if (isGrounded)
         {
