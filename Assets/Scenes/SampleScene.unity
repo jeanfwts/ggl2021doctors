@@ -1196,12 +1196,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 449707759}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &472189655 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5353807273319305892, guid: 23e9f26b9e8d0594598bf240bf7cf2f8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1540046997}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &560407411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3123163573905452368, guid: 2a4a34a717569bc4c8d6b5833fbb73a0,
@@ -1539,7 +1533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639989084}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 34.46, y: -5.4700003, z: -11.534267}
+  m_LocalPosition: {x: 34.46, y: -5.4700003, z: -10.034267}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1464728822}
@@ -1575,7 +1569,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.776779, y: 1}
+    m_SensorSize: {x: 1.7786561, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1639,8 +1633,8 @@ MonoBehaviour:
   m_Targets:
   - target: {fileID: 1540046998}
     weight: 1
-    radius: 3
-  - target: {fileID: 472189655}
+    radius: 1.5
+  - target: {fileID: 1428501099}
     weight: 1
     radius: 0
   - target: {fileID: 1445564951}
@@ -90349,6 +90343,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &1428501099 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3643389289564710499, guid: 23e9f26b9e8d0594598bf240bf7cf2f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1540046997}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1428796459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92445,7 +92445,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.75
+  orthographic size: 1.875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -92469,7 +92469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773036579}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 34.46, y: -5.4700003, z: -11.534267}
+  m_LocalPosition: {x: 34.46, y: -5.4700003, z: -10.034267}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2138124736}
